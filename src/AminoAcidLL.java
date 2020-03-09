@@ -1,3 +1,8 @@
+/*
+* Paulie Jo Gonzalez
+* lab w-8-9
+ */
+
 class AminoAcidLL{
   char aminoAcid;
   String[] codons;
