@@ -59,4 +59,15 @@ class AminoAcidResourcesTester{
     }
   }
 
-}
+  /*
+   * AminoAcidLL constructor:
+   */
+  @Test
+  public void testConstructor() {
+    AminoAcidLL aA = new AminoAcidLL("GCU");
+    String[] codonsList = {"GCG","GCA","GCC","GCU"};
+    assertEquals('A',aA.aminoAcid);
+    assertArrayEquals(codonsList,aA.codons);
+  }
+
+}//end class
