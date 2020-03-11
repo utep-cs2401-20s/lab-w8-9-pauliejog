@@ -70,4 +70,6 @@ class AminoAcidResourcesTester{
     assertArrayEquals(codonsList,aA.codons);
   }
 
+
+
 }//end class

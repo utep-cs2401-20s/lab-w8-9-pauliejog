@@ -9,21 +9,17 @@ class AminoAcidLL{
   int[] counts;
   AminoAcidLL next;
 
-  AminoAcidLL(){
-
-  }
-
+  AminoAcidLL(){}
 
   /********************************************************************************************/
   /* Creates a new node, with a given amino acid/codon 
    * pair and increments the codon counter for that codon.
    * NOTE: Does not check for repeats!! */
   AminoAcidLL(String inCodon){
-    AminoAcidResources aA = new AminoAcidResources();
-    aminoAcid = aA.getAminoAcidFromCodon(inCodon);
-    codons = aA.getCodonListForAminoAcid(aminoAcid);
-    counts = new int[codons.length];
-    next = null;
+    aminoAcid = AminoAcidResources.getAminoAcidFromCodon(inCodon);
+    codons = AminoAcidResources.getCodonListForAminoAcid(aminoAcid);
+    counts = new int[codons.length];//use incrCodons helper method
+    incrCodons(inCodon);
   }
 
   /********************************************************************************************/
@@ -33,7 +29,16 @@ class AminoAcidLL{
    * If there is no next node, add a new node to the list that would contain the codon. 
    */
   private void addCodon(String inCodon){
-  
+    if(aminoAcid == AminoAcidResources.getAminoAcidFromCodon(inCodon))
+      incrCodons(inCodon);
+    else {
+      if(next != null) {
+        next.addCodon(inCodon);
+      }
+      else {
+        next = new AminoAcidLL(inCodon);
+      }
+    }
   }
 
 
@@ -109,4 +114,15 @@ class AminoAcidLL{
   public static AminoAcidLL sort(AminoAcidLL inList){
     return null;
   }
-}
+
+  /* helper method for counts */
+  public void incrCodons(String inCodon) {
+    int i;
+    for(i = 0; i < codons.length; i++) {
+      if(codons[i].equals(inCodon))
+        break;
+    }
+    counts[i]++;
+  }
+
+}//end class
