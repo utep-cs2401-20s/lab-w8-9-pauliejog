@@ -66,8 +66,21 @@ class AminoAcidResourcesTester{
   public void testConstructor() {
     AminoAcidLL aA = new AminoAcidLL("GCU");
     String[] codonsList = {"GCG","GCA","GCC","GCU"};
+    int[] counts = {0,0,0,1};
     assertEquals('A',aA.aminoAcid);
     assertArrayEquals(codonsList,aA.codons);
+    assertArrayEquals(counts,aA.counts);
+  }
+
+  /*
+   * createFromRNASequence() method:
+   */
+  @Test
+  public void testCFRS() {
+    String sequence = "CCGUUGGCACUGUUG";
+    AminoAcidLL.createFromRNASequence(sequence);
+
+
   }
 
 
