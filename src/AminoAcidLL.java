@@ -18,7 +18,7 @@ class AminoAcidLL{
   AminoAcidLL(String inCodon){
     aminoAcid = AminoAcidResources.getAminoAcidFromCodon(inCodon);
     codons = AminoAcidResources.getCodonListForAminoAcid(aminoAcid);
-    counts = new int[codons.length];//use incrCodons helper method
+    counts = new int[codons.length];
     incrCodons(inCodon);
   }
 
@@ -29,23 +29,24 @@ class AminoAcidLL{
    * If there is no next node, add a new node to the list that would contain the codon. 
    */
   private void addCodon(String inCodon){
-    if(aminoAcid == AminoAcidResources.getAminoAcidFromCodon(inCodon))
-      incrCodons(inCodon);
-    else {
-      if(next != null) {
-        next.addCodon(inCodon);
-      }
+      if(aminoAcid == AminoAcidResources.getAminoAcidFromCodon(inCodon))
+          incrCodons(inCodon);
       else {
-        next = new AminoAcidLL(inCodon);
+          if(next != null)
+              next.addCodon(inCodon);
+          else
+              next = new AminoAcidLL(inCodon);
       }
-    }
   }
 
 
   /********************************************************************************************/
   /* Shortcut to find the total number of instances of this amino acid */
   private int totalCount(){
-    return 0;
+      int sum = 0;
+      for(int i = 0; i < counts.length; i++)
+          sum += counts[i];
+      return sum;
   }
 
   /********************************************************************************************/
@@ -85,7 +86,7 @@ class AminoAcidLL{
   /********************************************************************************************/
   /* Recursively returns the total list of amino acids in the order that they are in in the linked list. */
   public char[] aminoAcidList(){
-    return new char[]{};
+      return new char[1];
   }
 
   /********************************************************************************************/
@@ -105,7 +106,16 @@ class AminoAcidLL{
   /********************************************************************************************/
   /* Static method for generating a linked list from an RNA sequence */
   public static AminoAcidLL createFromRNASequence(String inSequence){
-    return null;
+    AminoAcidLL list = new AminoAcidLL();
+    String tempCodon = "";
+    for(int i = 0; i < inSequence.length(); i++) {
+      tempCodon += inSequence.charAt(i);
+      if(tempCodon.length() == 3) {
+        list.addCodon(tempCodon);
+        tempCodon = "";
+      }
+    }
+    return list;
   }
 
 
