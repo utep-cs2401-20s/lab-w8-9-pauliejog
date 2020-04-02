@@ -106,7 +106,7 @@ class AminoAcidLL{
   /********************************************************************************************/
   /* Static method for generating a linked list from an RNA sequence */
   public static AminoAcidLL createFromRNASequence(String inSequence){
-    AminoAcidLL list = new AminoAcidLL();
+    AminoAcidLL list = null;
     String tempCodon = "";
     for(int i = 0; i < inSequence.length(); i++) {
       tempCodon += inSequence.charAt(i);
@@ -134,5 +134,37 @@ class AminoAcidLL{
     }
     counts[i]++;
   }
+
+  /*
+    public static void sort(int[] a) {
+    int[] temp = new int[2];
+    int hold;
+
+    int index = a.length-1;
+    while(index >= 0) {
+      hold = a[index];
+      temp = findMax(a,index);
+      a[index] = temp[0];
+      a[temp[1]] = hold;
+      index--;
+
+    }
+  }
+  public static int[] findMax(int[] a, int ind) {
+    int[] result = new int[2];
+    int max = a[0];
+    int index = -1;
+    for(int i = 0; i <= ind; i++) {
+      if(a[i] >= max) {
+       max = a[i];
+        index = i;
+      }
+    }
+  result[0] = max;
+  result[1] = index;
+  return result;
+  }
+   */
+
 
 }//end class

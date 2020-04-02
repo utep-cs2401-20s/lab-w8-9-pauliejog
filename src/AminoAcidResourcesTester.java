@@ -78,7 +78,9 @@ class AminoAcidResourcesTester{
   @Test
   public void testCFRS() {
     String sequence = "CCGUUGGCACUGUUG";
-    AminoAcidLL.createFromRNASequence(sequence);
+    AminoAcidLL list = AminoAcidLL.createFromRNASequence(sequence);
+    System.out.println(list.aminoAcid);
+
 
 
   }
