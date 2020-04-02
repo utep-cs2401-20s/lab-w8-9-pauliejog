@@ -99,6 +99,11 @@ class AminoAcidLL{
   /********************************************************************************************/
   /* recursively determines if a linked list is sorted or not */
   public boolean isSorted(){
+    if(next == null)
+      return true;
+    if(next != null) {
+
+    }
     return false;
   }
 
@@ -150,18 +155,18 @@ class AminoAcidLL{
 
     }
   }
-  public static int[] findMax(int[] a, int ind) {
-    int[] result = new int[2];
-    int max = a[0];
+  public static String[] findLast(char[] a, int ind) {
+    String[] result = new String[2];
+    char last = a[0];
     int index = -1;
     for(int i = 0; i <= ind; i++) {
-      if(a[i] >= max) {
-       max = a[i];
+      if(a[i] >= last) {
+       last = a[i];
         index = i;
       }
     }
-  result[0] = max;
-  result[1] = index;
+  result[0] = Character.toString(last);
+  result[1] = Integer.toString(index);
   return result;
   }
    */
