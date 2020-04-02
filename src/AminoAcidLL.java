@@ -141,19 +141,20 @@ class AminoAcidLL{
   }
 
   /*
-    public static void sort(int[] a) {
-    int[] temp = new int[2];
-    int hold;
+    public static void sort(char[] a) {
+    String[] temp = new String[2];
+    char hold;
 
     int index = a.length-1;
     while(index >= 0) {
       hold = a[index];
-      temp = findMax(a,index);
-      a[index] = temp[0];
-      a[temp[1]] = hold;
+      temp = findLast(a,index);
+      a[index] = temp[0].charAt(0);
+      a[Integer.valueOf(temp[1])] = hold;
       index--;
 
     }
+  }
   }
   public static String[] findLast(char[] a, int ind) {
     String[] result = new String[2];
