@@ -52,7 +52,7 @@ class AminoAcidLL{
   /********************************************************************************************/
   /* helper method for finding the list difference on two matching nodes
   *  must be matching, but this is not tracked */
-  private int totalDiff(AminoAcidLL inList){
+  private int totalDiff(AminoAcidLL inList) {
     return Math.abs(totalCount() - inList.totalCount());
   }
 
@@ -74,19 +74,26 @@ class AminoAcidLL{
   public int aminoAcidCompare(AminoAcidLL inList){
     return 0;
   }
-
+//totalDiff
   /********************************************************************************************/
   /* Same ad above, but counts the codon usage differences
    * Must be sorted. */
   public int codonCompare(AminoAcidLL inList){
     return 0;
   }
-
+//codonDiff
 
   /********************************************************************************************/
   /* Recursively returns the total list of amino acids in the order that they are in in the linked list. */
   public char[] aminoAcidList(){
-      return new char[1];
+    if(next == null)
+      return new char[]{aminoAcid};
+    char[] a = next.aminoAcidList();
+    char[] ret = new char[a.length+1];
+    ret[0] = aminoAcid;
+    for(int i = 1; i < ret.length; i++)
+      ret[i] = a[i-1];
+    return ret;
   }
 
   /********************************************************************************************/
@@ -108,7 +115,6 @@ class AminoAcidLL{
     return true;
   }
 
-
   /********************************************************************************************/
   /* Static method for generating a linked list from an RNA sequence */
   public static AminoAcidLL createFromRNASequence(String inSequence){
@@ -128,6 +134,13 @@ class AminoAcidLL{
   /********************************************************************************************/
   /* sorts a list by amino acid character*/
   public static AminoAcidLL sort(AminoAcidLL inList){
+    char temp = inList.aminoAcid;
+    AminoAcidLL head = inList.next;
+    while(inList.next != null) {
+
+    }
+
+
     return null;
   }
 
