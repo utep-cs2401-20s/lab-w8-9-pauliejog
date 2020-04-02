@@ -73,16 +73,16 @@ class AminoAcidResourcesTester{
   }
 
   /*
-   * createFromRNASequence() method:
+   * aminoAcidList() method:
    */
   @Test
-  public void testCFRS() {
+  public void testAAL() {
     String sequence = "CCGUUGGCACUGUUG";
     AminoAcidLL list = AminoAcidLL.createFromRNASequence(sequence);
-    System.out.println(list.aminoAcid);
-
-
-
+    char[] exp = {'P','L','A','L','L'};
+    char[] result = list.aminoAcidList();
+    for(int i = 0; i < result.length; i++)
+        System.out.print(result[i] + " ");
   }
 
 

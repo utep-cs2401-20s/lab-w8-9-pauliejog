@@ -90,10 +90,10 @@ class AminoAcidLL{
       return new char[]{aminoAcid};
     char[] a = next.aminoAcidList();
     char[] ret = new char[a.length+1];
-    ret[0] = aminoAcid;
     for(int i = 1; i < ret.length; i++)
       ret[i] = a[i-1];
-    return ret;
+    ret[0] = aminoAcid;
+    return a;
   }
 
   /********************************************************************************************/
@@ -118,14 +118,10 @@ class AminoAcidLL{
   /********************************************************************************************/
   /* Static method for generating a linked list from an RNA sequence */
   public static AminoAcidLL createFromRNASequence(String inSequence){
-    AminoAcidLL list = null;
-    String tempCodon = "";
-    for(int i = 0; i < inSequence.length(); i++) {
-      tempCodon += inSequence.charAt(i);
-      if(tempCodon.length() == 3) {
-        list.addCodon(tempCodon);
-        tempCodon = "";
-      }
+    AminoAcidLL list = new AminoAcidLL();
+    while(inSequence.length() > 2) {
+      list.addCodon(inSequence.substring(0,3));
+      inSequence = inSequence.substring(3);
     }
     return list;
   }
