@@ -86,6 +86,7 @@ class AminoAcidLL{
   /********************************************************************************************/
   /* Recursively returns the total list of amino acids in the order that they are in in the linked list. */
   public char[] aminoAcidList(){
+    System.out.println(aminoAcid);
     if(next == null)
       return new char[]{aminoAcid};
     char[] a = next.aminoAcidList();
@@ -93,7 +94,8 @@ class AminoAcidLL{
     for(int i = 1; i < ret.length; i++)
       ret[i] = a[i-1];
     ret[0] = aminoAcid;
-    return a;
+
+    return ret;
   }
 
   /********************************************************************************************/
@@ -150,37 +152,6 @@ class AminoAcidLL{
     counts[i]++;
   }
 
-  /*
-    public static void sort(char[] a) {
-    String[] temp = new String[2];
-    char hold;
-
-    int index = a.length-1;
-    while(index >= 0) {
-      hold = a[index];
-      temp = findLast(a,index);
-      a[index] = temp[0].charAt(0);
-      a[Integer.valueOf(temp[1])] = hold;
-      index--;
-
-    }
-  }
-  }
-  public static String[] findLast(char[] a, int ind) {
-    String[] result = new String[2];
-    char last = a[0];
-    int index = -1;
-    for(int i = 0; i <= ind; i++) {
-      if(a[i] >= last) {
-       last = a[i];
-        index = i;
-      }
-    }
-  result[0] = Character.toString(last);
-  result[1] = Integer.toString(index);
-  return result;
-  }
-   */
 
 
 }//end class
