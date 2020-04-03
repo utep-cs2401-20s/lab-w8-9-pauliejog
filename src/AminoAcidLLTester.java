@@ -41,34 +41,96 @@ public class AminoAcidLLTester {
     }
     /*
      * isSorted() method:
+     * PASSED
      */
     @Test
-    public void testIsSorted() {
-        String sequence = "AGGAAGAUGCCC";
+    public void testIsSorted1() {
+        String sequence = "AGGAAGAUGCCCAGA";
         AminoAcidLL list = AminoAcidLL.createFromRNASequence(sequence);
-        AminoAcidLL temp = list.next;
+        assertEquals(false,list.isSorted());
+    }
+    /*
+     * isSorted() method:
+     *
+     */
+    @Test
+    public void testIsSorted2() {
+        String sequence = "GCCUGUUAC";
+        AminoAcidLL list = AminoAcidLL.createFromRNASequence(sequence);
+        assertEquals(true,list.isSorted());
+    }
+    /*
+     * sort() method:
+     * PASSED
+     */
+    @Test
+    public void testSort1() {
+        String sequence = "AGGAAGAUGCCCAGA";
+        AminoAcidLL list = AminoAcidLL.createFromRNASequence(sequence);
+        AminoAcidLL newList = AminoAcidLL.sort(list);
+        AminoAcidLL temp = newList.next;
         while (temp != null) {
-            System.out.print(temp.aminoAcid + " ");
+            System.out.print(temp.aminoAcid + "   ");
             temp = temp.next;
-
-        /*if(list.isSorted())
-            System.out.println("true");
-        else
-            System.out.println("false");*/
         }
     }
     /*
-     * createFromRNASequence() method:
-     * Tests that the method creates an accurate list of amino acids
-     * PASSED (it prints the correct linked list)
+     * sort() method:
+     * PASSED
+     */
+    @Test
+    public void testSort2() {
+        String sequence = "CCGUUGGCACUGUUG";
+        AminoAcidLL list = AminoAcidLL.createFromRNASequence(sequence);
+        AminoAcidLL newList = AminoAcidLL.sort(list);
+        AminoAcidLL temp = newList.next;
+        while (temp != null) {
+            System.out.print(temp.aminoAcid + "   ");
+            temp = temp.next;
+        }
+    }
+    /*
+     * sort() method:
+     * PASSED
+     */
+    @Test
+    public void testSort3() {
+        String sequence = "CAGCCAGCUAGGAGCAAG";
+        AminoAcidLL list = AminoAcidLL.createFromRNASequence(sequence);
+        AminoAcidLL newList = AminoAcidLL.sort(list);
+        AminoAcidLL temp = newList.next;
+        while (temp != null) {
+            System.out.print(temp.aminoAcid + "   ");
+            temp = temp.next;
+        }
+    }
+
+
+
+
+
+    /*
+     * createFromRNASequence() method: 2 TESTS
+     * Tests that the method creates accurate listS of amino acids
+     * PASSED (it prints the correct linked listS)
      */
     @Test
     public void testCFRS() {
-        String sequence = "AGGAAGAUGCCC";
+        String sequence = "AGGAAGAUGCCCAGA";
         AminoAcidLL list = AminoAcidLL.createFromRNASequence(sequence);
         AminoAcidLL temp = list.next;
         while (temp != null) {
-            System.out.print(temp.aminoAcid + " ");
+            System.out.print(temp.aminoAcid + "   ");
+            temp = temp.next;
+        }
+    }
+    @Test
+    public void testCFRS2() {
+        String sequence = "CAGCCAGCUAGGAGCAAG";
+        AminoAcidLL list = AminoAcidLL.createFromRNASequence(sequence);
+        AminoAcidLL temp = list.next;
+        while (temp != null) {
+            System.out.print(temp.aminoAcid + "   ");
             temp = temp.next;
         }
     }

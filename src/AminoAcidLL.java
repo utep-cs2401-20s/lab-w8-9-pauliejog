@@ -127,15 +127,12 @@ class AminoAcidLL{
 
   /********************************************************************************************/
   /* recursively determines if a linked list is sorted or not */
-  public boolean isSorted(){
-      if(next != null) {
-          if(aminoAcid > next.aminoAcid)
-              return false;
-          else
-              next.isSorted();
-      }
-      return true;
-
+  public boolean isSorted() {
+      if (next == null)
+          return true;
+      else if(aminoAcid > next.aminoAcid)
+          return false;
+      return next.isSorted();
   }
 
   /********************************************************************************************/
@@ -144,8 +141,10 @@ class AminoAcidLL{
     AminoAcidLL list = new AminoAcidLL();
     while(inSequence.length() > 2) {
       list.addCodon(inSequence.substring(0,3));
+      System.out.print(inSequence.substring(0,3) + " ");
       inSequence = inSequence.substring(3);
     }
+    System.out.println();
     return list;
   }
 
@@ -153,14 +152,33 @@ class AminoAcidLL{
   /********************************************************************************************/
   /* sorts a list by amino acid character*/
   public static AminoAcidLL sort(AminoAcidLL inList){
-    char temp = inList.aminoAcid;
-    AminoAcidLL iter = inList.next;
+
+    AminoAcidLL iter = inList;
+    char temp;
+
     while(iter.next != null) {
+        if(iter.aminoAcid > iter.next.aminoAcid) {
+            temp = iter.aminoAcid;
+            iter.aminoAcid = iter.next.aminoAcid;
+            iter.next.aminoAcid = temp;
+            iter = iter.next;
+            if(iter.next == null) {
+                if(inList.isSorted())
+                    break;
+                iter = inList;
+            }
+        }
 
+        else {
+            iter = iter.next;
+            if(iter.next == null) {
+                if(inList.isSorted())
+                    break;
+                iter = inList;
+            }
+        }
     }
-
-
-    return null;
+    return inList;
   }
 
   /* helper method for counts */
@@ -172,6 +190,7 @@ class AminoAcidLL{
     }
     counts[i]++;
   }
+
 
 
 
