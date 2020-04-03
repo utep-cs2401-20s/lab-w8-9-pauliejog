@@ -24,20 +24,54 @@ public class AminoAcidLLTester {
     public void testAAL() {
         String sequence = "CCGUUGGCACUGUUG";
         AminoAcidLL list = AminoAcidLL.createFromRNASequence(sequence);
-        //char[] exp = {'P','L','A','L','L'};
+        //char[] exp = {'P','L','A'};
         char[] result = list.aminoAcidList();
-        for(int i = 0; i < result.length; i++)
-            System.out.print(result[i] + " ");
-
-        //System.out.println("hello");
-
-        //System.out.print(result[1]);
-    /*AminoAcidLL temp = list.next;
-    while (temp != null) {
-      System.out.print(temp.aminoAcid + " ");
-      temp = temp.next;
-
-    }*/
+        //assertArrayEquals(exp,result);
     }
+    /*
+     * aminoAcidCompare() method:
+     */
+    @Test
+    public void testAAC() {
+        String sequence = "CCGUUGGCACUGUUG";
+        String sequence2 = "CCU";
+        AminoAcidLL list = AminoAcidLL.createFromRNASequence(sequence);
+        AminoAcidLL list2 = AminoAcidLL.createFromRNASequence(sequence2);
+        System.out.println(list.aminoAcidCompare(list2));
+    }
+    /*
+     * isSorted() method:
+     */
+    @Test
+    public void testIsSorted() {
+        String sequence = "AGGAAGAUGCCC";
+        AminoAcidLL list = AminoAcidLL.createFromRNASequence(sequence);
+        AminoAcidLL temp = list.next;
+        while (temp != null) {
+            System.out.print(temp.aminoAcid + " ");
+            temp = temp.next;
+
+        /*if(list.isSorted())
+            System.out.println("true");
+        else
+            System.out.println("false");*/
+        }
+    }
+    /*
+     * createFromRNASequence() method:
+     * Tests that the method creates an accurate list of amino acids
+     * PASSED (it prints the correct linked list)
+     */
+    @Test
+    public void testCFRS() {
+        String sequence = "AGGAAGAUGCCC";
+        AminoAcidLL list = AminoAcidLL.createFromRNASequence(sequence);
+        AminoAcidLL temp = list.next;
+        while (temp != null) {
+            System.out.print(temp.aminoAcid + " ");
+            temp = temp.next;
+        }
+    }
+
 
 }

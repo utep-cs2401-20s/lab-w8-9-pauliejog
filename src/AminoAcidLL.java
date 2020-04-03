@@ -72,7 +72,21 @@ class AminoAcidLL{
   /* Recursive method that finds the differences in **Amino Acid** counts. 
    * the list *must* be sorted to use this method */
   public int aminoAcidCompare(AminoAcidLL inList){
-    return 0;
+      if(!inList.isSorted())
+          return -1;
+      int diff = 88;
+      if(inList == null) {
+          diff += totalCount();
+          if(next != null)
+              diff += next.aminoAcidCompare(inList);
+      }
+      if(next == null) {
+          diff += inList.totalCount();
+          if(inList.next != null)
+              diff += aminoAcidCompare(inList.next);
+      }
+      diff = totalCount();
+    return diff;
   }
 //totalDiff
   /********************************************************************************************/
@@ -86,22 +100,27 @@ class AminoAcidLL{
   /********************************************************************************************/
   /* Recursively returns the total list of amino acids in the order that they are in in the linked list. */
   public char[] aminoAcidList() {
-      //AminoAcidLL temp = next;
-      if(next == null)
+      if(next == null) {
+          System.out.println("base case");
           return new char[]{aminoAcid};
+      }
+      char[] a = next.aminoAcidList();
+      char[] ret = new char[a.length+1];
+      for(int i = 0; i < a.length; i++) {
+        ret[i+1] = a[i];
+        System.out.print(a[i] + " ");
+      }
 
-      //System.out.println(next.aminoAcid);
-    char[] a = next.aminoAcidList();
-    char[] ret = new char[a.length+1];
-    for(int i = 1; i < ret.length; i++)
-      ret[i] = a[i-1];
-    ret[0] = next.aminoAcid;
-    return ret;
+      ret[0] = aminoAcid;
+      return ret;
   }
 
   /********************************************************************************************/
   /* Recursively returns the total counts of amino acids in the order that they are in in the linked list. */
   public int[] aminoAcidCounts(){
+    if(next == null)
+      return new int[]{0};
+    int[] n = next.aminoAcidCounts();
     return new int[]{};
   }
 
@@ -109,13 +128,14 @@ class AminoAcidLL{
   /********************************************************************************************/
   /* recursively determines if a linked list is sorted or not */
   public boolean isSorted(){
-    if(next != null) {
-      if(aminoAcid <= next.aminoAcid)
-        next.isSorted();
-      else
-        return false;
-    }
-    return true;
+      if(next != null) {
+          if(aminoAcid > next.aminoAcid)
+              return false;
+          else
+              next.isSorted();
+      }
+      return true;
+
   }
 
   /********************************************************************************************/
@@ -134,8 +154,8 @@ class AminoAcidLL{
   /* sorts a list by amino acid character*/
   public static AminoAcidLL sort(AminoAcidLL inList){
     char temp = inList.aminoAcid;
-    AminoAcidLL head = inList.next;
-    while(inList.next != null) {
+    AminoAcidLL iter = inList.next;
+    while(iter.next != null) {
 
     }
 
