@@ -95,7 +95,22 @@ public class AminoAcidLLTester {
      */
     @Test
     public void testSort3() {
-        String sequence = "CAGCCAGCUAGGAGCAAG";
+        String sequence = "CAGCCAGCUAGGAGCAAG";// Q   P   A   R   S   K
+        AminoAcidLL list = AminoAcidLL.createFromRNASequence(sequence);
+        AminoAcidLL newList = AminoAcidLL.sort(list);
+        AminoAcidLL temp = newList.next;
+        while (temp != null) {
+            System.out.print(temp.aminoAcid + "   ");
+            temp = temp.next;
+        }
+    }
+    /*
+     * sort() method:
+     * PASSED
+     */
+    @Test
+    public void testSort4() {
+        String sequence = "UACUGUGCC";// A C T
         AminoAcidLL list = AminoAcidLL.createFromRNASequence(sequence);
         AminoAcidLL newList = AminoAcidLL.sort(list);
         AminoAcidLL temp = newList.next;

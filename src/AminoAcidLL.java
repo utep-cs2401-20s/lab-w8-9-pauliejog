@@ -16,10 +16,10 @@ class AminoAcidLL{
    * pair and increments the codon counter for that codon.
    * NOTE: Does not check for repeats!! */
   AminoAcidLL(String inCodon){
-    aminoAcid = AminoAcidResources.getAminoAcidFromCodon(inCodon);
-    codons = AminoAcidResources.getCodonListForAminoAcid(aminoAcid);
-    counts = new int[codons.length];
-    incrCodons(inCodon);
+      aminoAcid = AminoAcidResources.getAminoAcidFromCodon(inCodon);
+      codons = AminoAcidResources.getCodonListForAminoAcid(aminoAcid);
+      counts = new int[codons.length];
+      incrCodons(inCodon);
   }
 
   /********************************************************************************************/
@@ -141,7 +141,6 @@ class AminoAcidLL{
     AminoAcidLL list = new AminoAcidLL();
     while(inSequence.length() > 2) {
       list.addCodon(inSequence.substring(0,3));
-      System.out.print(inSequence.substring(0,3) + " ");
       inSequence = inSequence.substring(3);
     }
     System.out.println();
@@ -152,10 +151,8 @@ class AminoAcidLL{
   /********************************************************************************************/
   /* sorts a list by amino acid character*/
   public static AminoAcidLL sort(AminoAcidLL inList){
-
     AminoAcidLL iter = inList;
     char temp;
-
     while(iter.next != null) {
         if(iter.aminoAcid > iter.next.aminoAcid) {
             temp = iter.aminoAcid;
@@ -168,7 +165,6 @@ class AminoAcidLL{
                 iter = inList;
             }
         }
-
         else {
             iter = iter.next;
             if(iter.next == null) {
@@ -180,7 +176,7 @@ class AminoAcidLL{
     }
     return inList;
   }
-
+  /********************************************************************************************/
   /* helper method for counts */
   public void incrCodons(String inCodon) {
     int i;
