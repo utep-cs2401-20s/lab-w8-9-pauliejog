@@ -79,10 +79,18 @@ class AminoAcidResourcesTester{
   public void testAAL() {
     String sequence = "CCGUUGGCACUGUUG";
     AminoAcidLL list = AminoAcidLL.createFromRNASequence(sequence);
-    char[] exp = {'P','L','A','L','L'};
-    char[] result = list.aminoAcidList();
-    for(int i = 0; i < result.length; i++)
+    //char[] exp = {'P','L','A','L','L'};
+    //char[] result = list.aminoAcidList();
+    /*for(int i = 0; i < result.length; i++)
         System.out.print(result[i] + " ");
+
+     */
+    //System.out.print(result[1]);
+    AminoAcidLL temp = list.next;
+    while(temp != null) {
+      System.out.print(temp.aminoAcid + " ");
+      temp = temp.next;
+    }
   }
 
 
