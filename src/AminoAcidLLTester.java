@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 public class AminoAcidLLTester {
     /*
      * AminoAcidLL constructor:
+     * Testing that the constructor works
      */
     @Test
     public void testConstructor() {
@@ -19,6 +20,7 @@ public class AminoAcidLLTester {
 
     /*
      * aminoAcidList() method:
+     * FAILED
      */
     @Test
     public void testAAL() {
@@ -30,6 +32,7 @@ public class AminoAcidLLTester {
     }
     /*
      * aminoAcidCompare() method:
+     * FAILED
      */
     @Test
     public void testAAC() {
@@ -60,19 +63,20 @@ public class AminoAcidLLTester {
         assertEquals(true,list.isSorted());
     }
     /*
-     * sort() method:
+     * sort() method: Somehow the easiest method for me :|
+     * Each of these tests print the sorted list and does not assert anything, but the sorted lists are correct
      * PASSED
      */
     @Test
     public void testSort1() {
-        String sequence = "AGGAAGAUGCCCAGA";
+        String sequence = "AGGAAGAUGCCCAGA";// R   K   M   P
         AminoAcidLL list = AminoAcidLL.createFromRNASequence(sequence);
         AminoAcidLL newList = AminoAcidLL.sort(list);
         AminoAcidLL temp = newList.next;
         while (temp != null) {
             System.out.print(temp.aminoAcid + "   ");
             temp = temp.next;
-        }
+        }// K   M   P   R
     }
     /*
      * sort() method:
@@ -80,7 +84,7 @@ public class AminoAcidLLTester {
      */
     @Test
     public void testSort2() {
-        String sequence = "CCGUUGGCACUGUUG";
+        String sequence = "CCGUUGGCACUGUUG";// P   L   A
         AminoAcidLL list = AminoAcidLL.createFromRNASequence(sequence);
         AminoAcidLL newList = AminoAcidLL.sort(list);
         AminoAcidLL temp = newList.next;
@@ -119,11 +123,6 @@ public class AminoAcidLLTester {
             temp = temp.next;
         }
     }
-
-
-
-
-
     /*
      * createFromRNASequence() method: 2 TESTS
      * Tests that the method creates accurate listS of amino acids
@@ -133,7 +132,7 @@ public class AminoAcidLLTester {
     public void testCFRS() {
         String sequence = "AGGAAGAUGCCCAGA";
         AminoAcidLL list = AminoAcidLL.createFromRNASequence(sequence);
-        AminoAcidLL temp = list.next;
+        AminoAcidLL temp = list;
         while (temp != null) {
             System.out.print(temp.aminoAcid + "   ");
             temp = temp.next;
@@ -143,7 +142,7 @@ public class AminoAcidLLTester {
     public void testCFRS2() {
         String sequence = "CAGCCAGCUAGGAGCAAG";
         AminoAcidLL list = AminoAcidLL.createFromRNASequence(sequence);
-        AminoAcidLL temp = list.next;
+        AminoAcidLL temp = list;
         while (temp != null) {
             System.out.print(temp.aminoAcid + "   ");
             temp = temp.next;
@@ -151,4 +150,4 @@ public class AminoAcidLLTester {
     }
 
 
-}
+}//end class

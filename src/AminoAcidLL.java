@@ -39,7 +39,6 @@ class AminoAcidLL{
       }
   }
 
-
   /********************************************************************************************/
   /* Shortcut to find the total number of instances of this amino acid */
   private int totalCount(){
@@ -133,8 +132,7 @@ class AminoAcidLL{
       else if(aminoAcid > next.aminoAcid)
           return false;
       return next.isSorted();
-  }
-
+  }//end isSorted
   /********************************************************************************************/
   /* Static method for generating a linked list from an RNA sequence */
   public static AminoAcidLL createFromRNASequence(String inSequence){
@@ -145,9 +143,7 @@ class AminoAcidLL{
     }
     System.out.println();
     return list;
-  }
-
-
+  }//end createFromRNASequence
   /********************************************************************************************/
   /* sorts a list by amino acid character*/
   public static AminoAcidLL sort(AminoAcidLL inList){
@@ -175,7 +171,7 @@ class AminoAcidLL{
         }
     }
     return inList;
-  }
+  }//end sort
   /********************************************************************************************/
   /* helper method for counts */
   public void incrCodons(String inCodon) {
@@ -185,9 +181,5 @@ class AminoAcidLL{
         break;
     }
     counts[i]++;
-  }
-
-
-
-
+  }//end incrCodons
 }//end class
