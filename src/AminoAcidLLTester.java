@@ -68,15 +68,26 @@ public class AminoAcidLLTester {
     }
     /*
      * aminoAcidCompare() method:
-     * FAILED
+     * FAILED NullPointerExceptions
      */
     @Test
     public void testAACompare() {
-        String sequence = "CCGUUGGCACUGUUG";
-        String sequence2 = "CCU";
+        String sequence = "GCCUGUUACGCC";
+        String sequence2 = "GCCUGUUACUAC";
         AminoAcidLL list = AminoAcidLL.createFromRNASequence(sequence);
         AminoAcidLL list2 = AminoAcidLL.createFromRNASequence(sequence2);
         System.out.println(list.aminoAcidCompare(list2));
+    }
+    /*
+     * codonCompare() method:
+     * FAILED NullPointerExceptions
+     */
+    @Test
+    public void testCodonCompare() {
+        String sequence = "GCCUGUUACGCC";
+        String sequence2 = "GCCUGUUACUAC";
+        AminoAcidLL list = AminoAcidLL.createFromRNASequence(sequence);
+        AminoAcidLL list2 = AminoAcidLL.createFromRNASequence(sequence2);
     }
     /*
      * isSorted() method:
