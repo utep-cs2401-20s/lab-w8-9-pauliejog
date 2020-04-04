@@ -3,6 +3,8 @@
 * lab w-8-9
  */
 
+import java.time.chrono.MinguoDate;
+
 class AminoAcidLL{
   char aminoAcid;
   String[] codons;
@@ -32,10 +34,10 @@ class AminoAcidLL{
       if(aminoAcid == AminoAcidResources.getAminoAcidFromCodon(inCodon))
           incrCodons(inCodon);
       else {
-          if(next != null)
-              next.addCodon(inCodon);
-          else
+          if(next == null)
               next = new AminoAcidLL(inCodon);
+          else
+              next.addCodon(inCodon);
       }
   }
 
@@ -100,16 +102,13 @@ class AminoAcidLL{
   /* Recursively returns the total list of amino acids in the order that they are in in the linked list. */
   public char[] aminoAcidList() {
       if(next == null) {
-          System.out.println("base case");
           return new char[]{aminoAcid};
       }
       char[] a = next.aminoAcidList();
       char[] ret = new char[a.length+1];
       for(int i = 0; i < a.length; i++) {
         ret[i+1] = a[i];
-        System.out.print(a[i] + " ");
       }
-
       ret[0] = aminoAcid;
       return ret;
   }
@@ -117,10 +116,16 @@ class AminoAcidLL{
   /********************************************************************************************/
   /* Recursively returns the total counts of amino acids in the order that they are in in the linked list. */
   public int[] aminoAcidCounts(){
-    if(next == null)
-      return new int[]{0};
+    if(next == null) {
+        return new int[]{totalCount()};
+    }
     int[] n = next.aminoAcidCounts();
-    return new int[]{};
+    int[] ret = new int[n.length+1];
+    for(int i = 0; i < n.length; i++) {
+        ret[i + 1] = n[i];
+    }
+    ret[0] = totalCount();
+    return ret;
   }
 
 
@@ -141,7 +146,6 @@ class AminoAcidLL{
       list.addCodon(inSequence.substring(0,3));
       inSequence = inSequence.substring(3);
     }
-    System.out.println();
     return list;
   }//end createFromRNASequence
   /********************************************************************************************/

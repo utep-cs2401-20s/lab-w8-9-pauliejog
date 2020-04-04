@@ -28,6 +28,8 @@ public class AminoAcidLLTester {
         AminoAcidLL list = AminoAcidLL.createFromRNASequence(sequence);
         //char[] exp = {'P','L','A'};
         char[] result = list.aminoAcidList();
+        for(int i = 1; i < result.length; i++)
+            System.out.print(result[i] + " ");
         //assertArrayEquals(exp,result);
     }
     /*
@@ -72,7 +74,7 @@ public class AminoAcidLLTester {
         String sequence = "AGGAAGAUGCCCAGA";// R   K   M   P
         AminoAcidLL list = AminoAcidLL.createFromRNASequence(sequence);
         AminoAcidLL newList = AminoAcidLL.sort(list);
-        AminoAcidLL temp = newList.next;
+        AminoAcidLL temp = newList;
         while (temp != null) {
             System.out.print(temp.aminoAcid + "   ");
             temp = temp.next;
@@ -87,7 +89,7 @@ public class AminoAcidLLTester {
         String sequence = "CCGUUGGCACUGUUG";// P   L   A
         AminoAcidLL list = AminoAcidLL.createFromRNASequence(sequence);
         AminoAcidLL newList = AminoAcidLL.sort(list);
-        AminoAcidLL temp = newList.next;
+        AminoAcidLL temp = newList;
         while (temp != null) {
             System.out.print(temp.aminoAcid + "   ");
             temp = temp.next;
@@ -102,7 +104,7 @@ public class AminoAcidLLTester {
         String sequence = "CAGCCAGCUAGGAGCAAG";// Q   P   A   R   S   K
         AminoAcidLL list = AminoAcidLL.createFromRNASequence(sequence);
         AminoAcidLL newList = AminoAcidLL.sort(list);
-        AminoAcidLL temp = newList.next;
+        AminoAcidLL temp = newList;
         while (temp != null) {
             System.out.print(temp.aminoAcid + "   ");
             temp = temp.next;
@@ -117,7 +119,7 @@ public class AminoAcidLLTester {
         String sequence = "UACUGUGCC";// A C T
         AminoAcidLL list = AminoAcidLL.createFromRNASequence(sequence);
         AminoAcidLL newList = AminoAcidLL.sort(list);
-        AminoAcidLL temp = newList.next;
+        AminoAcidLL temp = newList;
         while (temp != null) {
             System.out.print(temp.aminoAcid + "   ");
             temp = temp.next;
