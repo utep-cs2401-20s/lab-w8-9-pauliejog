@@ -20,29 +20,51 @@ public class AminoAcidLLTester {
 
     /*
      * aminoAcidList() method:
-     * FAILED
+     * PASSED
      */
     @Test
     public void testAAList() {
         String sequence = "CCGUUGGCACUGUUG";
         AminoAcidLL list = AminoAcidLL.createFromRNASequence(sequence);
-        //char[] exp = {'P','L','A'};
+        char[] exp = {'P','L','A'};
         char[] result = list.aminoAcidList();
-        for(int i = 1; i < result.length; i++)
-            System.out.print(result[i] + " ");
-        //assertArrayEquals(exp,result);
+        assertArrayEquals(exp,result);
+    }
+    /*
+     * aminoAcidList() method:
+     * PASSED
+     */
+    @Test
+    public void testAAList2() {
+        String sequence = "AGGAAGAUGCCCAGA";
+        AminoAcidLL list = AminoAcidLL.createFromRNASequence(sequence);
+        char[] exp = {'R','K','M','P'};
+        char[] result = list.aminoAcidList();
+        assertArrayEquals(exp,result);
     }
     /*
      * aminoAcidCounts() method:
-     * FAILED
+     * PASSED
      */
     @Test
     public void testAACounts() {
         String sequence = "CCGUUGGCACUGUUG";
         AminoAcidLL list = AminoAcidLL.createFromRNASequence(sequence);
         int[] result = list.aminoAcidCounts();
-        for(int i = 0; i < result.length; i++)
-            System.out.print(result[i] + " ");
+        int[] exp = {1,3,1};
+        assertArrayEquals(exp,result);
+    }
+    /*
+     * aminoAcidCounts() method:
+     * PASSED
+     */
+    @Test
+    public void testAACounts2() {
+        String sequence = "CCGUUGGCACUGUUGGCCUGUUAC";
+        AminoAcidLL list = AminoAcidLL.createFromRNASequence(sequence);
+        int[] result = list.aminoAcidCounts();
+        int[] exp = {1,3,2,1,1};
+        assertArrayEquals(exp,result);
     }
     /*
      * aminoAcidCompare() method:

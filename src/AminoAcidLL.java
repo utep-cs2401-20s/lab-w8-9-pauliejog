@@ -126,8 +126,6 @@ class AminoAcidLL{
     ret[0] = totalCount();
     return ret;
   }
-
-
   /********************************************************************************************/
   /* recursively determines if a linked list is sorted or not */
   public boolean isSorted() {
