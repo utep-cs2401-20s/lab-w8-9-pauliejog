@@ -72,8 +72,6 @@ class AminoAcidLL{
   /* Recursive method that finds the differences in **Amino Acid** counts. 
    * the list *must* be sorted to use this method */
   public int aminoAcidCompare(AminoAcidLL inList){
-      if(!inList.isSorted())
-          return -1;
       int diff = 0;
       if(inList == null) {
           diff += totalCount();
@@ -81,10 +79,15 @@ class AminoAcidLL{
               next.aminoAcidCompare(inList);
       }
       if(next == null) {
-          diff += aminoAcidCompare(inList.next);
+          diff += inList.totalCount();
+          if(inList.next != null)
+              aminoAcidCompare(inList.next);
       }
-      diff += next.totalDiff(inList);
-      next.aminoAcidCompare(inList.next);
+      diff += totalDiff(inList);
+      if(next != null)
+          next.aminoAcidCompare(inList.next);
+      if(inList.next != null)
+          aminoAcidCompare(inList.next);
 
       return diff;
   }
@@ -92,8 +95,6 @@ class AminoAcidLL{
   /* Same ad above, but counts the codon usage differences
    * Must be sorted. */
   public int codonCompare(AminoAcidLL inList){
-      if(!inList.isSorted())
-          return -1;
       int diff = 0;
       if(inList == null) {
           diff += totalCount();
@@ -101,10 +102,15 @@ class AminoAcidLL{
               next.aminoAcidCompare(inList);
       }
       if(next == null) {
-          diff += aminoAcidCompare(inList.next);
+          diff += inList.totalCount();
+          if(inList.next != null)
+              aminoAcidCompare(inList.next);
       }
-      diff += next.codonDiff(inList);
-      next.aminoAcidCompare(inList.next);
+      diff += codonDiff(inList);
+      if(next != null)
+          next.aminoAcidCompare(inList.next);
+      if(inList.next != null)
+          aminoAcidCompare(inList.next);
 
       return diff;
   }

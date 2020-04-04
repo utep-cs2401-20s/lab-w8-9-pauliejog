@@ -73,9 +73,10 @@ public class AminoAcidLLTester {
     @Test
     public void testAACompare() {
         String sequence = "GCCUGUUACGCC";
-        String sequence2 = "GCCUGUUACUAC";
+        String sequence2 = "GCCUGUUACGCC";
         AminoAcidLL list = AminoAcidLL.createFromRNASequence(sequence);
         AminoAcidLL list2 = AminoAcidLL.createFromRNASequence(sequence2);
+        AminoAcidLL list3 = new AminoAcidLL();
         System.out.println(list.aminoAcidCompare(list2));
     }
     /*
