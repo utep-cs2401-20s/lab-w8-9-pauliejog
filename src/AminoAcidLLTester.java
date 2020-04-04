@@ -23,7 +23,7 @@ public class AminoAcidLLTester {
      * FAILED
      */
     @Test
-    public void testAAL() {
+    public void testAAList() {
         String sequence = "CCGUUGGCACUGUUG";
         AminoAcidLL list = AminoAcidLL.createFromRNASequence(sequence);
         //char[] exp = {'P','L','A'};
@@ -33,11 +33,23 @@ public class AminoAcidLLTester {
         //assertArrayEquals(exp,result);
     }
     /*
+     * aminoAcidCounts() method:
+     * FAILED
+     */
+    @Test
+    public void testAACounts() {
+        String sequence = "CCGUUGGCACUGUUG";
+        AminoAcidLL list = AminoAcidLL.createFromRNASequence(sequence);
+        int[] result = list.aminoAcidCounts();
+        for(int i = 0; i < result.length; i++)
+            System.out.print(result[i] + " ");
+    }
+    /*
      * aminoAcidCompare() method:
      * FAILED
      */
     @Test
-    public void testAAC() {
+    public void testAACompare() {
         String sequence = "CCGUUGGCACUGUUG";
         String sequence2 = "CCU";
         AminoAcidLL list = AminoAcidLL.createFromRNASequence(sequence);
